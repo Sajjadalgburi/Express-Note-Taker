@@ -12,3 +12,8 @@ app.use(express.urlencoded({ extended: true }));
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "public/404.html"));
 });
+
+// route for homepage
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public/homepage.html"));
+});
