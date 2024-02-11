@@ -11,3 +11,5 @@ const {
 
 // Define the path to db.json
 const dbFilePath = path.join(__dirname, "../db/db.json");
+
+module.exports = notes;
