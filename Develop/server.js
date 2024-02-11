@@ -7,3 +7,8 @@ const PORT = procces.env.PORT || 3001;
 app.use(express.static("public"));
 app.use(experss.json());
 app.use(express.urlencoded({ extended: true }));
+
+// route for 404 page
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public/404.html"));
+});
