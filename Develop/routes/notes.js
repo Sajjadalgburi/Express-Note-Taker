@@ -38,4 +38,17 @@ notes.post("/", (req, res) => {
   }
 });
 
+// GET method to grab respective note id
+notes.get("/:note_id", (req, res) => {
+  const id = req.params.note_id;
+  readFromFile(dbFilePath)
+    .then((data) => JSON.parse(data))
+    .then((json) => {
+      const result = json.filter((note) => note.note_id !== id);
+      return result.length > 0
+        ? res.json(result)
+        : res.json("No tip with that ID");
+    });
+});
+
 module.exports = notes;
