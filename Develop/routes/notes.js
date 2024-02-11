@@ -51,4 +51,22 @@ notes.get("/:note_id", (req, res) => {
     });
 });
 
+// DELETE method to delete specific note id from database
+notes.delete("/:note_id", (req, res) => {
+  const id = req.params.note_id;
+
+  readFromFile(dbFilePath)
+    .then((data) => JSON.parse(data))
+    .then((json) => {
+      // Make a new array of all notes except the one with the ID provided in the URL
+      const result = json.filter((note) => note.id !== id);
+
+      // Save that array to the filesystem
+      writeToFile(dbFilePath, result); // Stringify the JSON before writing to file
+
+      // Respond to the DELETE request
+      res.json(`Item ${id} has been deleted 🗑️`);
+    });
+});
+
 module.exports = notes;
