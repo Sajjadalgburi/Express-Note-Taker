@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const PORT = process.env.PORT || 3001;
+const api = require("./routes/main");
 
 // Middleware's for json, grabbing user data and static assets
 app.use(express.static("public"));
@@ -12,6 +13,9 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public/homepage.html"));
 });
+
+// GET method for custom api route
+app.use("/api", api);
 
 app.get("/notes", (req, res) => {
   res.sendFile(path.join(__dirname, "public/notes.html"));
