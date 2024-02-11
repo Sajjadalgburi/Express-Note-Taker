@@ -18,4 +18,24 @@ notes.get("/", (req, res) => {
   readFromFile(dbFilePath).then((data) => res.json(JSON.parse(data)));
 });
 
+// Recives request from user to store a new note in db.json
+notes.post("/", (req, res) => {
+  console.info(`${req.method} request received to add a new note`);
+
+  const { title, text } = req.body; // checks if title and text are within the body of web
+
+  if (req.body) {
+    // create new note with unique id
+    const newNote = {
+      title,
+      text,
+      id: uuid(),
+    };
+    readAndAppend(newNote, dbFilePath);
+    res.json(`Note added successfully 🚀`);
+  } else {
+    res.error("Error in adding note"); // send user error message
+  }
+});
+
 module.exports = notes;
