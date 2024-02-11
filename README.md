@@ -79,4 +79,4 @@ This application is covered under the MIT License.
 **How to reach me with additional questions!**
 
 - GitHub: [GitHub Account](https://github.com/Sajjadalgburi)
-- Email: Dfsa@gmail.com
+- Email: Dfgsajjad@gmail.com
