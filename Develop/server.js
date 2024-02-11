@@ -13,6 +13,10 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public/homepage.html"));
 });
 
+app.get("/notes", (req, res) => {
+  res.sendFile(path.join(__dirname, "public/notes.html"));
+});
+
 // route for 404 page
 app.use((req, res, next) => {
   res.status(404).sendFile(path.join(__dirname, "public/404.html"));
